@@ -32,7 +32,12 @@ export const signup = async (req, res, next) => {
   }
 
   const hashedPassword = bcrypt.hashSync(password);
-  const user = new User({ name, email, password: hashedPassword });
+  const user = new User({
+    name,
+    email,
+    password: hashedPassword,
+    blogs: [],
+  });
 
   try {
     await user.save();
